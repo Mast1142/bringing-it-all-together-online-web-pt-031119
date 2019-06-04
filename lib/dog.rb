@@ -74,11 +74,11 @@ class Dog
     dog = DB[:conn].execute("SELECT * FROM dogs WHERE name = ? AND breed = ?", name, breed).flatten
     if !dog.empty?
       dog_data = dog[0]
-      # dog = Dog.new(dog_data[0], dog_data[1], dog_data[2])
+      dog = Dog.new(dog_data[0], dog_data[1], dog_data[2])
     else
-      # id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+      id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
       #binding.pry
-      # dog = self.create(name: name, breed: breed)
+      dog = self.create(name: name, breed: breed)
     end
     dog
   end
